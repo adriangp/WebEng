@@ -1,4 +1,4 @@
-package toDoServerSOAP.common;
+package webApp.common;
 
 public class ToDo {
 	
@@ -8,7 +8,7 @@ public class ToDo {
 	private int priority;
 	
 	public ToDo() {
-		
+	
 	}
 
 	public String getTask() {
