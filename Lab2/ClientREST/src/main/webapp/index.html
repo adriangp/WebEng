@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<title>The ultimate WebApp to manage your tasks</title>
+	</head>
+	<body>
+		<h1 align=center>The ultimate WebApp to manage your tasks</h1>
+		<h2 align=center>Choose one of this options:</h2>
+
+		<center><form action="add" method="get">
+			<b>Add a task (All the fields are mandatory)</b><br/>
+			Enter the task's name: <input type="text" name="task"><br/>
+			Enter the task's context: <input type="text" name="context"><br/>
+			Enter the task's project: <input type="text" name="project"><br/>
+			Enter the task's priority: <input type="text" name="priority"><br/>
+			<input type="submit" value="Add the task">
+		</form></center>
+			<hr>
+	   <center><form action="remove" method="get">
+			<b>Remove a task (All the fields are mandatory)</b><br/>
+			Enter the task's name: <input type="text" name="task"><br/>
+			Enter the task's context: <input type="text" name="context"><br/>
+			Enter the task's project: <input type="text" name="project"><br/>
+			Enter the task's priority: <input type="text" name="priority"><br/>
+			<input type="submit" value="Remove the task">
+		</form></center>
+			<hr>
+		<center><form action="list" method="get">
+			<b>Search a task by identifier (Empty to list all the tasks)</b>
+			<input type="text" name="id"><br/>
+			<input type="submit" value="List the task(s)">
+		</form></center>
+	</body>
+</html>

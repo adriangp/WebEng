@@ -1,4 +1,4 @@
-package toDoServerREST.common;
+package webApp.common;
 
 import java.net.URI;
 
