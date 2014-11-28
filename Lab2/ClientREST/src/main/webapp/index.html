@@ -15,6 +15,19 @@
 			<input type="submit" value="Add the task">
 		</form></center>
 			<hr>
+	   <center><form action="update" method="get">
+			<b>Update a task (All the old fields are mandatory)</b><br/>
+			Enter the old task's name: <input type="text" name="taskOld"><br/>
+			Enter the new task's name: <input type="text" name="taskNew"><br/>
+			Enter the old task's context: <input type="text" name="contextOld"><br/>
+			Enter the new task's context: <input type="text" name="contextNew"><br/>
+			Enter the old task's project: <input type="text" name="projectOld"><br/>
+			Enter the new task's project: <input type="text" name="projectNew"><br/>
+			Enter the old task's priority: <input type="text" name="priorityOld"><br/>
+			Enter the new task's priority: <input type="text" name="priorityNew"><br/>
+			<input type="submit" value="Update the task">
+		</form></center>
+			<hr>
 	   <center><form action="remove" method="get">
 			<b>Remove a task (All the fields are mandatory)</b><br/>
 			Enter the task's name: <input type="text" name="task"><br/>

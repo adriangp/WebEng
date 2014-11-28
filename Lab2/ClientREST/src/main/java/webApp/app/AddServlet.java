@@ -19,9 +19,7 @@ import webApp.common.ToDo;
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = { "/add" })
 public class AddServlet extends HttpServlet {
-
-	public final static String DEFAULT_FILE_NAME = "todos_list.json";
-
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -40,8 +38,8 @@ public class AddServlet extends HttpServlet {
 			numberError = true;
 		}
 		
-		if (task.equals("") || task == null || context.equals("") || 
-				context == null || project.equals("") || project == null){
+		if (task == null || task.equals("") || context == null || 
+				context.equals("") || project == null || project.equals("")){
 			resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			out.println("<html><head><title>The ultimate WebApp to manage your "
 					+ "tasks</title></head><body><h1 align=\"center\">"
