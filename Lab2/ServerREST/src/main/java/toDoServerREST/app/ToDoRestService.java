@@ -20,8 +20,6 @@ import toDoServerREST.common.ToDoList;
 
 @Path("/tasks")
 public class ToDoRestService {
-
-	public final static String DEFAULT_FILE_NAME = "todos_list.json";
 	
 	@Inject
 	ToDoList toDoList;
