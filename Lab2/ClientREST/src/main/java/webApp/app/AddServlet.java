@@ -76,7 +76,6 @@ public class AddServlet extends HttpServlet {
 					path = resp2.getLocation().toString();
 				resp.setStatus(resp2.getStatus());
 				
-				//resp.setStatus(HttpServletResponse.SC_OK);
 				out.println("<html><head><title>The ultimate WebApp to manage your "
 						+ "tasks</title></head><body><h1 align=\"center\">" 
 						+ resp2.getStatus() + ": "

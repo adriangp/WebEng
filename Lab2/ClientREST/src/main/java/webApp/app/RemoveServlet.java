@@ -8,8 +8,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import webApp.common.ToDo;
+import webApp.common.ToDoList;
 
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = { "/remove" })
@@ -62,14 +67,45 @@ public class RemoveServlet extends HttpServlet {
 				todo.setProject(project);
 				todo.setPriority(priority);
 
+				String status = "";
+				String info = "";
+				boolean find = false;
 				
+				// Get all the tasks
+				Client client = ClientBuilder.newClient();
+				Response resp2 = client.target("http://localhost:8081/tasks")
+						.request(MediaType.APPLICATION_JSON).get();
+						
+				if (resp2.getStatus() == HttpServletResponse.SC_OK){
+					ToDoList list = resp2.readEntity(ToDoList.class);
+					
+					// Search the current task
+					for (ToDo t : list.getList()){
+						if (t.equals(todo)){
+							// If the task is found, it will be deleted
+							find = true;
+							Response resp3 = client.target(t.getHref())
+									.request(MediaType.APPLICATION_JSON).delete();
+							
+							status += resp3.getStatus();
+							info += resp3.getStatusInfo();
+							resp.setStatus(resp3.getStatus());
+						}
+					}
+					if (!find){
+						status += HttpServletResponse.SC_NOT_FOUND;
+						info += "Not Found";
+					}
+				}else{
+					status += resp2.getStatus();
+					info += resp2.getStatusInfo();
+				}
 				
-				resp.setStatus(HttpServletResponse.SC_OK);
+				resp.setStatus(resp2.getStatus());
 				out.println("<html><head><title>The ultimate WebApp to manage your "
 						+ "tasks</title></head><body><h1 align=\"center\">" 
-						
-						
-						+ "</h1><br/>"
+						+ status + ": "
+						+ info + "</h1><br/>"
 						+ "<input type=\"button\" value=\"Back\" "
 						+ "onClick=\"location.href='./index.html'\"/>"
 						+ "</body></html>");
