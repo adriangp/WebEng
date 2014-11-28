@@ -1,8 +1,5 @@
 package toDoServerREST.app;
 
-import java.io.FileWriter;
-import java.io.IOException;
-
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -17,8 +14,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriInfo;
-
-import com.google.gson.Gson;
 
 import toDoServerREST.common.ToDo;
 import toDoServerREST.common.ToDoList;
@@ -43,15 +38,6 @@ public class ToDoRestService {
 		toDo.setId(toDoList.nextId());
 		toDo.setHref(info.getAbsolutePathBuilder().path("todo/{id}").build(toDo.getId()));
 		toDoList.addToDo(toDo);
-		FileWriter output;
-		Gson gson = new Gson();
-		try {
-			output = new FileWriter(DEFAULT_FILE_NAME);
-			output.write(gson.toJson(toDoList));
-			output.close();
-		} catch (IOException e) {
-			return Response.serverError().build();
-		}
 		return Response.created(toDo.getHref()).entity(toDo).build();
 	}
 
@@ -81,15 +67,6 @@ public class ToDoRestService {
 				return Response.ok(toDo).build();
 			}
 		}
-		FileWriter output;
-		Gson gson = new Gson();
-		try {
-			output = new FileWriter(DEFAULT_FILE_NAME);
-			output.write(gson.toJson(toDoList));
-			output.close();
-		} catch (IOException e) {
-			return Response.serverError().build();
-		}
 		return Response.status(Status.BAD_REQUEST).build();
 	}
 	
@@ -102,15 +79,6 @@ public class ToDoRestService {
 				toDoList.getList().remove(i);
 				return Response.noContent().build();
 			}
-		}
-		FileWriter output;
-		Gson gson = new Gson();
-		try {
-			output = new FileWriter(DEFAULT_FILE_NAME);
-			output.write(gson.toJson(toDoList));
-			output.close();
-		} catch (IOException e) {
-			return Response.serverError().build();
 		}
 		return Response.status(Status.NOT_FOUND).build();
 	}

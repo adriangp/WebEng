@@ -2,6 +2,7 @@ package toDoServerREST.app;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URI;
 import java.util.logging.Level;
@@ -51,8 +52,18 @@ public class Server {
 			LOGGER.info("Press 's' to shutdown now the server...");
 			while(true){
 				int c = System.in.read();
-				if (c == 's')
+				if (c == 's'){
+					FileWriter output;
+					gson = new Gson();
+					try {
+						output = new FileWriter(DEFAULT_FILE_NAME);
+						output.write(gson.toJson(todos));
+						output.close();
+					} catch (IOException e) {
+						LOGGER.log(Level.SEVERE, e.toString(), e);
+					}
 					break;
+				}
 			}
 		} catch (IOException ioe) {
 			LOGGER.log(Level.SEVERE, ioe.toString(), ioe);
