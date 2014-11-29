@@ -42,6 +42,7 @@ public class Server {
 		for (ToDo t : todos.getList()){
 			if (t.getId() == 0){
 				t.setId(todos.nextId());
+				t.setHref(URI.create("http://localhost:8081/tasks/todo/"+t.getId()));
 			}
 		}
 		HttpServer server = GrizzlyHttpServerFactory.createHttpServer(
