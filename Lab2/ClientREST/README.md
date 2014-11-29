@@ -5,6 +5,6 @@ Deploy your code to a [Jetty](http://www.eclipse.org/jetty/) server with ```grad
 
 The user can create, read, update and delete (CRUD) the tasks that the REST server manage.
 
-The service endpoint is at [http://localhost:8080/index.html](http://localhost:8080/index.html) (see [WEB-INF/sun-jaxws.xml](src/main/webapp/WEB-INF/sun-jaxws.xml) for the endpoint mapping). 
+The service endpoint is at [http://localhost:8080/index.html](http://localhost:8080/index.html) (see [WEB-INF/web.xml](src/main/webapp/WEB-INF/web.xml) for the endpoint mapping). 
 
 
