@@ -15,6 +15,6 @@ task server(type: JavaExec) {
 	standardInput 	= System.in  
     group 			= 'ToDo Websockets Service'
     description 	= 'Start a Websocket endpoint'
-    main 			= 'events.toDoServerWebSockets.app.ServerWS'
+    main 			= 'toDoServerWebSockets.app.ServerWS'
 	classpath 		= sourceSets.main.runtimeClasspath
 }
