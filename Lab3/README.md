@@ -1,4 +1,4 @@
-# Lab2
+# Lab3
 This repository contains two applications:
 
 * A [WebSocket Server](https://github.com/adriangp/WebEng/tree/master/Lab3/ServerWebSockets) that manage a task list.
